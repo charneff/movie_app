@@ -17,26 +17,38 @@ class MoviesController < ApplicationController
         binding.pry
         #create (backend)
         #create a new movie and redirect
+        movie = Movie.create(params[:movie])
+        redirect to "/movies/#{movie.id}"
     end 
 
     get '/movies/:id' do 
         #show
         #show one movie
+        @movie = Movie.find_by_id(params[:id])
+        erb :'movies/show'
     end 
 
     get '/movies/:id/edit' do 
         #edit
         #get the form to edit a movie
+        @movie = Movie.find_by_id(params[:id])
+        erb :'movies/edit'
     end 
 
     patch '/movies/:id' do 
         #update
         # update the single movie 
+        movie = Movie.find_by_id(params[:id])
+        movie.update(params[:movie])
+        redirect to "/movies/#{movie.id}"
     end
 
     delete '/movies/:id' do 
         #delete
         #destroy the single movie
+        movie = Movie.find_by_id(params[:id])
+        movie.destroy
+        redirect to '/movies'
     end 
   
 

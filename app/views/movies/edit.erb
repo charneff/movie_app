@@ -1,0 +1,14 @@
+Editing <%= @movie.name %><br><br>
+<form method="POST" action="/movies/<%= @movie.id %>">
+    <input type="hidden" name="_method" value="PATCH">
+    <label>Movie Name:</label>
+    <input type="text" name="movie[name]" value="<%= @movie.name %>">
+    <label>Movie Description:</label>
+    <input type="text" name="movie[description]" value="<%= @movie.description %>">
+    <label>Movie Year:</label>
+    <input type="text" name="movie[year]" value="<%= @movie.year %>">
+    <label>Movie Rating:</label>
+    <input type="text" name="movie[rating]" value="<%= @movie.rating %>">
+
+    <input type="submit" value="Create Movie">
+</form>

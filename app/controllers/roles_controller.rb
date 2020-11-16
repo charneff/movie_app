@@ -4,7 +4,22 @@ class RolesController < ApplicationController
     end
 
     post '/roles' do 
-        binding.pry
+        
     end 
-end 
 
+    get '/roles' do 
+        
+    end 
+
+    get '/roles/:id' do 
+        
+    end 
+
+    get '/roles/:id/edit' do 
+
+    end 
+
+    patch '/roles/:id' do 
+   
+    end 
+end

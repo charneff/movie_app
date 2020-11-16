@@ -1,0 +1,8 @@
+<%= @role.name %><br><br>
+<%= @role.movie.name %><br>
+<%= @role.actor.name %><br>
+<a href="/roles/<%= @role.id %>/edit">Edit this Role</a><br><br>
+<form method="POST" action="/roles/<%= @role.id %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete this role">
+</form>

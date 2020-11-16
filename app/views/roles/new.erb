@@ -1,6 +1,23 @@
 <form method="POST" action="/roles">
-Role Name: <input type="text" name="role[name]">
-Movie Name: <input type="text" name="movie[name]">
-Movie Description: <input type="text" name="movie[description]">
-Actor Name: <input type="text" name="actor[name]">
-<input type="submit" value="Create Movie">
+    Role Name: <input type="text" name="role[name]"><br><br>
+
+    Select Movie:<br>
+    <% Movie.all.each do |m| %>
+        <input type="radio" name="role[movie_id]" id="<%= m.id %>" value="<%= m.id %>"><%= m.name %><br>
+    <% end %><br>
+
+    OR Create a New Movie:<br>
+    Movie Name: <input type="text" name="movie[name]"><br>
+    Movie Description: <input type="text" name="movie[description]"><br><br>
+
+
+    Select Actor: <br>
+    <% Actor.all.each do |m| %>
+        <input type="radio" name="role[actor_id]" id="<%= m.id %>" value="<%= m.id %>"><%= m.name %><br>
+    <% end %><br>
+
+    OR Create a New Actor:<br>
+    Actor Name: <input type="text" name="actor[name]"><br><br>
+    
+    <input type="submit" value="Create Role">
+</form>
