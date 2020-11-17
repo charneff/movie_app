@@ -5,6 +5,7 @@ POST /movies & GET /movies/new
 
     GET /movies/new
         erb :'movies/new'
+        
     POST /movies
         movie = Movie.create(params)
                 OR

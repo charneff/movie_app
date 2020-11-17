@@ -4,7 +4,7 @@
     Role Name: <input type="text" name="role[name]" value="<%=@role.name%>"><br><br>
 
     Select Movie:<br>
-    <% Movie.all.each do |m| %>
+    <% @movies.each do |m| %>
         <input type="radio" name="role[movie_id]" value="<%= m.id %>" <% if @role.movie_id == m.id %>checked<% end %>><%= m.name %><br>
     <% end %><br>
 
@@ -14,7 +14,7 @@
 
 
     Select Actor: <br>
-    <% Actor.all.each do |m| %>
+    <% @actors.each do |m| %>
         <input type="radio" name="role[actor_id]" value="<%= m.id %>" <% if m.id == @role.actor_id %>checked<% end %>><%= m.name %><br>
     <% end %><br>
 

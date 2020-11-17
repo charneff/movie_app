@@ -10,13 +10,14 @@ class MoviesController < ApplicationController
     get '/movies/new' do
         #new
         #get the form to create a new movie
+        redirect_if_not_logged_in
         erb :'movies/new'
     end
 
-    post '/movies' do 
-        binding.pry
+    post '/movies' do
         #create (backend)
         #create a new movie and redirect
+        redirect_if_not_logged_in
         movie = Movie.create(params[:movie])
         redirect to "/movies/#{movie.id}"
     end 
@@ -31,6 +32,7 @@ class MoviesController < ApplicationController
     get '/movies/:id/edit' do 
         #edit
         #get the form to edit a movie
+        redirect_if_not_logged_in
         @movie = Movie.find_by_id(params[:id])
         erb :'movies/edit'
     end 
@@ -38,6 +40,7 @@ class MoviesController < ApplicationController
     patch '/movies/:id' do 
         #update
         # update the single movie 
+        redirect_if_not_logged_in
         movie = Movie.find_by_id(params[:id])
         movie.update(params[:movie])
         redirect to "/movies/#{movie.id}"
@@ -46,6 +49,7 @@ class MoviesController < ApplicationController
     delete '/movies/:id' do 
         #delete
         #destroy the single movie
+        redirect_if_not_logged_in
         movie = Movie.find_by_id(params[:id])
         movie.destroy
         redirect to '/movies'

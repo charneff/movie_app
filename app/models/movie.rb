@@ -1,6 +1,6 @@
 class Movie < ActiveRecord::Base
     has_many :roles
     has_many :actors, through: :roles
-
-    ##class methods
+    belongs_to :user
+    
 end 

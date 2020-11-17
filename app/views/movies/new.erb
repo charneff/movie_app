@@ -1,5 +1,6 @@
 Create a New Movie:<br>
 <form method="POST" action="/movies">
+    <input type="hidden" name="movie[user_id]" value="<%= current_user.id %>">
     <label>Movie Name:</label>
     <input type="text" name="movie[name]">
     <label>Movie Description:</label>
