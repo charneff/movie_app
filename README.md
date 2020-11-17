@@ -7,3 +7,4 @@
 - Define the purpose of a migration
 - Define a schema
 - Discuss altering databases and models with further migrations, rollbacks# movie_app
+# auth
