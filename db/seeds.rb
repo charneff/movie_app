@@ -24,6 +24,3 @@ Role.create({name: "Noah Calhoun", movie_id: notebook.id, actor_id: rg.id})
 Role.create({name: "Allison Hamilton", movie_id: notebook.id, actor_id: rm.id})
 Role.create({name: "Jacob Palmer", movie_id: csl.id, actor_id: rg.id})
 Role.create({name: "Cal Weaver", movie_id: csl.id, actor_id: sc.id})
-
-
-

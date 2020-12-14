@@ -1,11 +1,15 @@
-
+<%if flash[:message] %>
+    <h3><%= flash[:message] %></h3>
+<% end %>
 Name: <%= @movie.name %><br>
 Description: <%= @movie.description %><br>
 Year: <%= @movie.year%><br>
 Rating: <%= @movie.rating %><br>
 Director: <%= @movie.director %><br>
-<a href="/movies/<%= @movie.id %>/edit">Edit Movie</a>
-<form method="POST" action="/movies/<%= @movie.id %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Movie">
-</form>
+<% if @movie.user_id && @movie.user_id == current_user.id%>
+    <a href="/movies/<%= @movie.id %>/edit">Edit Movie</a>
+    <form method="POST" action="/movies/<%= @movie.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Movie">
+    </form>
+<%end%>

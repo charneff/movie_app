@@ -8,6 +8,7 @@ class MoviesController < ApplicationController
     end 
 
     get '/movies/new' do
+      
         #new
         #get the form to create a new movie
         redirect_if_not_logged_in
@@ -23,9 +24,8 @@ class MoviesController < ApplicationController
     end 
 
     get '/movies/:id' do 
-        #show
         #show one movie
-        @movie = Movie.find_by_id(params[:id])
+        @movie = Movie.find(params[:id])
         erb :'movies/show'
     end 
 
@@ -34,7 +34,12 @@ class MoviesController < ApplicationController
         #get the form to edit a movie
         redirect_if_not_logged_in
         @movie = Movie.find_by_id(params[:id])
-        erb :'movies/edit'
+        if @movie.user_id && @movie.user_id == current_user.id
+            erb :'movies/edit'
+        else 
+            flash[:message] = "You are unable to perform that action."
+            redirect to "/movies/#{@movie.id}"
+        end 
     end 
 
     patch '/movies/:id' do 
@@ -42,17 +47,28 @@ class MoviesController < ApplicationController
         # update the single movie 
         redirect_if_not_logged_in
         movie = Movie.find_by_id(params[:id])
-        movie.update(params[:movie])
-        redirect to "/movies/#{movie.id}"
+        if movie.user_id && movie.user_id == current_user.id
+            movie.update(params[:movie])
+            redirect to "/movies/#{movie.id}"
+        else
+            flash[:message] = "You are unable to perform that action."
+            redirect to "/movies/#{movie.id}"
+        end 
     end
 
     delete '/movies/:id' do 
         #delete
         #destroy the single movie
+        binding.pry
         redirect_if_not_logged_in
         movie = Movie.find_by_id(params[:id])
-        movie.destroy
-        redirect to '/movies'
+        if movie.user_id && movie.user_id == current_user.id
+            movie.destroy
+            redirect to '/movies'
+        else
+            flash[:message] = "You are unable to perform that action."
+            redirect to "/movies/#{movie.id}"
+        end 
     end 
   
 
