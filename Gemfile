@@ -13,3 +13,5 @@ gem 'dotenv'
 gem 'bcrypt'
 gem 'sinatra-flash'
 gem 'require_all'
+
+##Testing changes and merge
